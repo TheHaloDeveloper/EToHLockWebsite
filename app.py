@@ -1,9 +1,12 @@
 from flask import Flask, render_template, abort, send_from_directory
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
+import json
 import markdown
 import os
 import time
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
 
@@ -11,8 +14,8 @@ app = Flask(__name__)
 def favicon():
     return send_from_directory(os.path.join(app.root_path, "static/assets"), "etohlock.png")
 
-creds = service_account.Credentials.from_service_account_file(
-    "service.json",
+creds = service_account.Credentials.from_service_account_info(
+    json.loads(os.environ["GOOGLE_CREDENTIALS"]),
     scopes=["https://www.googleapis.com/auth/spreadsheets.readonly"]
 )
 service = build('sheets', 'v4', credentials=creds)

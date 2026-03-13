@@ -2,3 +2,4 @@ flask
 google-auth
 google-api-python-client
 markdown
+python-dotenv
