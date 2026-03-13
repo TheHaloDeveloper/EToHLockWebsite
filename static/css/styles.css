@@ -579,3 +579,14 @@ main {
 .grid.list-view .card-desc {
     -webkit-line-clamp: 1;
 }
+
+.evidence-content ul,
+.evidence-content ol {
+    color: var(--muted);
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.evidence-content li {
+    margin-bottom: 4px;
+}
